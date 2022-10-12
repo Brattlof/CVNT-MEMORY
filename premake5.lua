@@ -3,6 +3,7 @@ workspace "CVNT"
 	staticruntime "on"
 	language "C++"
 	cppdialect "C++20"
+	characterset "MBCS"
 	
 	targetdir ("%{wks.location}/Binaries/%{prj.name}/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}")
 	objdir ("%{wks.location}/Binaries/%{prj.name}/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}")
@@ -37,7 +38,6 @@ workspace "CVNT"
 project "Memory"
 	location "Source"
 	kind "StaticLib"
-	characterset "MBCS"
 	
 	files
 	{

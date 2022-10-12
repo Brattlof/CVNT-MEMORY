@@ -15,6 +15,7 @@ public:
 	static void Deinit(void) { if (s_pInstance == NULL) return; delete s_pInstance; }
 
 	static T& GetInstance(void) { return *s_pInstance; }
+	static T* GetInstancePtr(void) { return s_pInstance; }
 
 private:
 	static T* s_pInstance;
