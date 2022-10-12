@@ -4,6 +4,8 @@
 
 bool External::SetProcess(const char* process_exe_name)
 {
+	if (m_ProcessHandle) CloseHandle(m_ProcessHandle);
+
 	if (GetInstance().m_ProcessId = FindProcessId(process_exe_name)) 
 		return m_ProcessHandle = OpenProcess(PROCESS_VM_OPERATION | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, m_ProcessId);
 
