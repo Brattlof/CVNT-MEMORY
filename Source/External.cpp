@@ -2,7 +2,15 @@
 
 #include <iostream>
 
-DWORD External::FindProcessId(const char* process_name)
+bool External::SetProcess(const char* process_exe_name)
+{
+	if (GetInstance().m_ProcessId = FindProcessId(process_exe_name)) 
+		return m_ProcessHandle = OpenProcess(PROCESS_VM_OPERATION | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, m_ProcessId);
+
+	return false;
+}
+
+DWORD External::FindProcessId(const char* process_exe_name)
 {
 	HANDLE SnapshotHandle = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0x0);
 
@@ -11,7 +19,7 @@ DWORD External::FindProcessId(const char* process_name)
 
 	for (Process32First(SnapshotHandle, &ProcessEntry); Process32Next(SnapshotHandle, &ProcessEntry);)
 	{
-		if (!strcmp(ProcessEntry.szExeFile, process_name))
+		if (!strcmp(ProcessEntry.szExeFile, process_exe_name))
 		{
 			CloseHandle(SnapshotHandle);
 			return ProcessEntry.th32ProcessID;

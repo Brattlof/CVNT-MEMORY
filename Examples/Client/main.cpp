@@ -4,7 +4,9 @@
 
 int main(void)
 {
-	std::cout << External::GetInstance().FindProcessId("notepad.exe");
+	External::Init();
+
+	External::Deinit();
 
 	return 0x0;
 }
